@@ -1,0 +1,200 @@
+{
+    "basePath": "/vision/v1",
+    "definitions": {
+      "ApiResponse": {
+        "properties": {
+          "count": {
+            "type": "integer"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "message": {
+            "type": "string"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "ApiErrorResponse": {
+        "properties": {
+          "count": {
+            "type": "integer"
+          },
+          "data": {
+            "type": "string",
+            "example": null
+          },
+          "message": {
+            "type": "string",
+            "example": "message"
+          },
+          "success": {
+            "type": "boolean",
+            "example": false
+          }
+        },
+        "type": "object"
+      },
+      "ApiTokenRequired": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Invalid Login attempt"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "host": "dev-apis.yupl.us",
+    "info": {
+      "contact": {},
+      "description": "The Project Server is responsible for the CRUD operations on various modules in the Vision",
+      "title": "Project Server",
+      "version": "1.0"
+    },
+    "paths": {
+      "/topics": {
+        "get": {
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "header",
+              "description": "Bearer <token>",
+              "name": "Authorization",
+              "type": "string",
+              "required": true
+            },
+            {
+              "description": "User ID",
+              "in": "query",
+              "name": "user_id",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "description": "Page Number",
+              "in": "query",
+              "name": "pn",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "description": "Per Page",
+              "in": "query",
+              "name": "pp",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "items": {
+                  "$ref": "#/definitions/ApiResponse"
+                },
+                "type": "array"
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "schema": {
+                "$ref": "#/definitions/ApiErrorResponse"
+              }
+            },
+            "401": {
+              "description": "Bad Request",
+              "schema": {
+                "$ref": "#/definitions/ApiTokenRequired"
+              }
+            }
+          },
+          "summary": "List the topics",
+          "tags": [
+            "v1"
+          ]
+        }
+      },
+      "/list-expressions": {
+        "get": {
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "header",
+              "description": "Bearer <token>",
+              "name": "Authorization",
+              "type": "string",
+              "required": true
+            },
+            {
+              "description": "Video ID",
+              "in": "query",
+              "name": "video_id",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "description": "Page Number",
+              "in": "query",
+              "name": "pn",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "description": "Per Page",
+              "in": "query",
+              "name": "pp",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "items": {
+                  "$ref": "#/definitions/ApiResponse"
+                },
+                "type": "array"
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "schema": {
+                "$ref": "#/definitions/ApiErrorResponse"
+              }
+            }
+          },
+          "summary": "List Expressions of a video",
+          "tags": [
+            "v1"
+          ]
+        }
+      }
+    },
+    "schemes": [
+      "https"
+    ],
+    "swagger": "2.0",
+    "tags": [
+      {
+        "name": "v1"
+      }
+    ]
+  }

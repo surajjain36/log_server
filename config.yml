@@ -1,0 +1,38 @@
+http:
+  address: ":3000"
+  readtimeout: 30
+  writetimeout: 30
+  idletimeout: 60
+  domain: "motlii.com"
+  cookieexpiry: 30
+
+log:
+  level: "info"
+  format: "text"
+  filename: ""
+  maxsize: 500
+  maxage: 7
+  maxbackups: 5
+  localtime: false
+  compress: true
+
+queue:
+  uri : a 
+  host: a
+  user: a
+  password: a 
+
+mongo:
+  host : "ind.dev.mdb-mongos01.yupl.us" 
+  port: 27017
+  username: "youplus"
+  password: "youplus9091" 
+  db : "youplus_development"
+  poolSize: 10
+
+mysql:
+  host: a
+  port: 1
+  database: db
+  user: u
+  password: p
